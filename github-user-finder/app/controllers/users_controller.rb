@@ -6,24 +6,21 @@ class UsersController < ApplicationController
     end
 
     def create 
-        json = find_github_user(user_params[:name])
-        if json["message"] 
-            flash.alert = json["message"]
-            render :new
+        if @user = User.find_by(name: user_params[:name])
+            redirect_to user_path(@user)
         else 
-            user_data = {name: json["login"], email: json["email"], repo_count: json["public_repos"]}
-            @user = User.new(user_data)
-            if @user.save 
-                redirect_to user_path(@user)
+            json = find_github_user(user_params[:name])
+            if json["message"] 
+                flash.alert = json["message"]
+                render :new
+            else 
+                user_data = {name: json["login"], email: json["email"], repo_count: json["public_repos"]}
+                @user = User.new(user_data)
+                if @user.save 
+                    redirect_to user_path(@user)
+                end
             end
         end
-        # user_data = {name: json["login"], email: json["email"], repo_count: json["public_repos"]}
-        # byebug
-       
-        # @user = User.new(user_params)
-        # if @user.save 
-        #     redirect_to user_path(@user)
-        # end
     end
 
     def show 
