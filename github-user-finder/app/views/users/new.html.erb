@@ -1,6 +1,6 @@
 <h1>Search for a Github User:</h1>
 <%= form_with model: @user, local: true do |f| %>
     <%= f.label :name %>
-    <%= f.text_field (:name) %>
+    <%= f.text_field :name %>
     <%= f.submit "Search" %>
 <% end %>

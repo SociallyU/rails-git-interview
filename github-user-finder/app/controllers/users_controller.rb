@@ -1,5 +1,3 @@
-require 'net/http'
-
 class UsersController < ApplicationController
     def new 
         @user = User.new 
@@ -18,6 +16,8 @@ class UsersController < ApplicationController
                 @user = User.new(user_data)
                 if @user.save 
                     redirect_to user_path(@user)
+                else 
+                    render :new 
                 end
             end
         end
