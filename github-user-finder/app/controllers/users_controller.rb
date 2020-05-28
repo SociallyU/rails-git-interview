@@ -6,10 +6,7 @@ class UsersController < ApplicationController
     end
 
     def create 
-        base_url = "https://api.github.com/users/"
-        uri = URI("https://api.github.com/users/" + user_params[:name])
-        string = Net::HTTP.get(uri)
-        json = JSON.parse(string)
+        json = find_github_user(user_params[:name])
         if json["message"] 
             flash.alert = json["message"]
             render :new
@@ -37,6 +34,13 @@ class UsersController < ApplicationController
 
     def user_params 
         params.require(:user).permit(:name)
+    end
+
+    def find_github_user(user_name)
+        base_url = "https://api.github.com/users/"
+        uri = URI("https://api.github.com/users/" + user_name)
+        string = Net::HTTP.get(uri)
+        JSON.parse(string)
     end
 
 end
