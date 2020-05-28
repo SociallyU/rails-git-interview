@@ -13,6 +13,12 @@ class UsersController < ApplicationController
         if json["message"] 
             flash.alert = json["message"]
             render :new
+        else 
+            user_data = {name: json["login"], email: json["email"], repo_count: json["public_repos"]}
+            @user = User.new(user_data)
+            if @user.save 
+                redirect_to user_path(@user)
+            end
         end
         # user_data = {name: json["login"], email: json["email"], repo_count: json["public_repos"]}
         # byebug
