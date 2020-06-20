@@ -1,0 +1,2 @@
+class GithubUsersController < ApplicationController
+end
