@@ -1,11 +1,7 @@
 class GithubUsersController < ApplicationController
 
   def index
-    begin
-      set_github_user ? @github_user : create
-    rescue
-
-    end
+    set_github_user ? @github_user : create
   end
 
   def create
