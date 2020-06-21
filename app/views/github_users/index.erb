@@ -1,0 +1,11 @@
+<%= form_tag(github_users_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :github_name, params[:github_name], placeholder: "Search Github Users", required: true %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if @github_user %>
+  <p>name: <%= @github_user.name %></p>
+  <p>email: <%= @github_user.email %></p>
+  <p>repo count: <%= @github_user.repo_count %></p>
+<% end %>
+

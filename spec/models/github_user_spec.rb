@@ -20,7 +20,7 @@ RSpec.describe GithubUser, type: :model do
       end
 
       it 'email' do
-        expect(no_email).to be_invalid
+        expect(no_email).to be_valid
       end
 
       it 'repo_count' do
