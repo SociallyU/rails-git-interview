@@ -9,7 +9,7 @@
         <ul>
             <li>Name: <%= @git_user[:name] ? @git_user[:name] : "No Name Found" %></li>
             <li>Email: <%= @git_user[:email] ? @git_user[:email] : "No Email Found" %></li>
-            <li>Public Repo Count: <%= @git_user[:public_repo_count] %></li>
+            <li>Public Repo Count: <%= @git_user[:public_repo_count] ? @git_user[:public_repo_count] : "No Repo Count Found" %></li>
         </ul>
     </div>
 <% end %>

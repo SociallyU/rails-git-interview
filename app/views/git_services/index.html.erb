@@ -1,0 +1,16 @@
+<div>
+    <h2>Results</h2>
+
+    <div>
+        <h3>Welcome to GitGetter</h3>
+        <p>The Revolutionary app that finds anyone's name, email, and github repo count with just their github username</p>
+
+
+        <%= form_for :git_service, url: git_services_path do |f| %>
+            Github Username: <%= f.text_field :github_username %><br />
+            <%= f.submit "Submit"%>
+        <% end %>
+
+    </div>
+
+</div>
