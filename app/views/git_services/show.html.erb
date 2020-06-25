@@ -1,0 +1,16 @@
+<% if @git_user[:error] %>
+    <div>
+        <h3>Sorry,</h3>
+        <p>Unfortunately, we could not find that user</p>
+    </div>
+<% else %>
+    <div>
+        <h3>User Info</h3>
+        <ul>
+            <li>Name: <%= @git_user[:name] ? @git_user[:name] : "No Name Found" %></li>
+            <li>Email: <%= @git_user[:email] ? @git_user[:email] : "No Email Found" %></li>
+            <li>Public Repo Count: <%= @git_user[:public_repo_count] %></li>
+        </ul>
+    </div>
+<% end %>
+
