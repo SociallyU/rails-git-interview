@@ -9,15 +9,16 @@ class GitUser < ApplicationRecord
         response = HTTParty.get('https://api.github.com/users/' + username).to_json
         json = JSON.parse(response)
         if json["login"]
-            return {
+            git_user_info = {
                 name: json["name"],
                 email: json["email"],
-                public_repo_count: json["public_repos"]
+                public_repo_count: json["public_repos"],
+                username: username
             }
+            @git_user = GitUser.create(git_user_info)
+            return @git_user
         else 
-            return {
-                error: "User Not Found"
-            }
+            return false
         end
     end
 end
