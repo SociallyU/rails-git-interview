@@ -2,8 +2,8 @@ class GitUser < ApplicationRecord
 
 
     ## this method fetches from the github api. If a user is found, 
-    ## their name, email, and repo count are returned in a hash. If 
-    ## a user is not found, an erro rmessage is returned.
+    ## a new git_user is created within the database with the 
+    ## corresponding information. Otherwise, return false.
 
     def self.get_git_info(username)
         response = HTTParty.get('https://api.github.com/users/' + username).to_json
