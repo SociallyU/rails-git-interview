@@ -1,4 +1,4 @@
-class GitService < ApplicationRecord
+class GitUser < ApplicationRecord
 
 
     ## this method fetches from the github api. If a user is found, 
