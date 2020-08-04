@@ -1,0 +1,12 @@
+<%= form_with url: github_users_path, method: :get, local: true do %>
+  <%= label_tag :username, "Github User" %>
+  <%= text_field_tag :username %>
+  <%= submit_tag "Find" %>
+<% end %>
+
+<% if @github_user.present? %>
+  <h1><%= @github_user.username %></h1>
+  <h2><%= @github_user.name %></h2>
+  <p>Email: <%= @github_user.email %></p>
+  <p>Repo count: <%= @github_user.repo_count %></p>
+<% end %>
